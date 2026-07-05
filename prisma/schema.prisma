@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Character {
+  id        String   @id @default(cuid())
+  // Identity
+  name      String
+  title     String
+  // General information (Informations Générales)
+  age       Int
+  gender    String
+  race      String
+  alignment String
+  charClass String
+  faction   String
+  languages String // JSON string array
+  // Précis / valeur — stats 0..100
+  stats     String // JSON: { strength, constitution, agility, endurance, intelligence, charisma, luck }
+  // Biographie et Carrière — array of paragraphs
+  bio       String // JSON string array
+  // Presentation
+  themeKey     String  @default("gold")
+  classIconId  String
+  factionIconId String
+  // Image generation
+  appearanceTags String // danbooru-style tags for hero image
+  seed           Int
+  heroImagePath  String?
+  // Provenance
+  userPrefs String? // the optional preference prompt used at generation time
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

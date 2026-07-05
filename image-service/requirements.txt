@@ -1,0 +1,24 @@
+# Python 3.11 or 3.12 recommended (PyTorch wheels may lag on 3.13/3.14).
+#
+# IMPORTANT (Apple Silicon / MPS): avoid PyTorch 2.10 / 2.11 — they produce
+# black/noise SDXL images on MPS. 2.9.x is the current sweet spot. The pin
+# below stays below 2.10; if you hit issues, `pip install "torch==2.9.0"`.
+
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2.6
+
+torch>=2.2,<2.10
+diffusers>=0.30
+transformers>=4.40
+accelerate>=0.30
+safetensors>=0.4
+peft>=0.11
+
+rembg>=2.0.50
+onnxruntime>=1.17     # backend rembg needs for background removal
+pillow>=10.2
+numpy<2
+
+# Fast Hugging Face model downloads (avoids slow unauthenticated Xet transfers).
+hf_transfer>=0.1.9

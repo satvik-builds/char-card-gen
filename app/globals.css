@@ -1,26 +1,96 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/*
+  QuestUI design tokens — fantasy/RPG dark theme used for the app chrome
+  (sidebar, buttons, prompts). The character CARD itself uses its own
+  per-theme parchment palette, applied via CSS variables in CharacterCard.
+*/
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: #1a0f0a;
+  --color-surface: #2c1a10;
+  --color-surface-elevated: #3d2517;
+  --color-gold: #ca8a04;
+  --color-gold-bright: #daa520;
+  --color-red: #991b1b;
+  --color-purple: #581c87;
+  --color-success: #22c55e;
+  --color-parchment: #f5e6d3;
+  --color-muted: #bfa98a;
+  --color-border-dim: #5c3d2e;
+
+  --font-headline: var(--font-cinzel);
+  --font-body: var(--font-spectral);
+  --font-blackletter: var(--font-blackletter);
+  --font-pirata: var(--font-pirata);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-parchment);
+  font-family: var(--font-spectral), Georgia, serif;
+}
+
+/* Subtle layered backdrop for the app shell */
+body {
+  background-image:
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(202, 138, 4, 0.06),
+      transparent 45%
+    ),
+    radial-gradient(circle at 90% 90%, rgba(88, 28, 135, 0.08), transparent 50%);
+  background-attachment: fixed;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-dim);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+.font-headline {
+  font-family: var(--font-cinzel), serif;
+}
+.font-blackletter {
+  font-family: var(--font-blackletter), "UnifrakturCook", serif;
+}
+.font-pirata {
+  font-family: var(--font-pirata), serif;
+}
+
+/* Gold glow used on active/interactive chrome elements */
+.glow-gold {
+  box-shadow: 0 0 20px rgba(202, 138, 4, 0.4);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin 1.1s linear infinite;
 }

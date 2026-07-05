@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // The Python image service (and its virtualenv) is not part of the JS lint scope.
+    "image-service/**",
   ]),
 ]);
 

@@ -1,23 +1,36 @@
 {
-  "name": "cardgen",
+  "name": "char-card-gen",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently -n web,ollama,image -c blue,magenta,green \"npm:dev:web\" \"npm:dev:ollama\" \"npm:dev:image\"",
+    "dev:web": "next dev",
+    "dev:ollama": "sh -c 'curl -sf http://127.0.0.1:11434/api/tags >/dev/null 2>&1 || exec ollama serve'",
+    "dev:image": "sh -c 'curl -sf http://127.0.0.1:8000/health >/dev/null 2>&1 || (cd image-service && exec .venv/bin/python -m uvicorn main:app --host 127.0.0.1 --port 8000)'",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:migrate": "prisma migrate dev",
+    "db:generate": "prisma generate",
+    "db:studio": "prisma studio",
+    "seed:demo": "node scripts/seed-demo.mjs"
   },
   "dependencies": {
+    "@prisma/client": "^6.19.3",
+    "html-to-image": "^1.11.13",
     "next": "16.2.9",
+    "prisma": "^6.19.3",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "react-icons": "^5.6.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "concurrently": "^10.0.3",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
     "tailwindcss": "^4",

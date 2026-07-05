@@ -39,3 +39,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# prisma / sqlite
+/prisma/dev.db
+/prisma/dev.db-journal
+
+# generated card images
+/public/generated/
+
+# python image service
+/image-service/.venv/
+/image-service/__pycache__/
+__pycache__/
+*.pyc

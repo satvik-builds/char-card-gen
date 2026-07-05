@@ -1,0 +1,26 @@
+-- CreateTable
+CREATE TABLE "Character" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "name" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "age" INTEGER NOT NULL,
+    "gender" TEXT NOT NULL,
+    "race" TEXT NOT NULL,
+    "alignment" TEXT NOT NULL,
+    "charClass" TEXT NOT NULL,
+    "faction" TEXT NOT NULL,
+    "languages" TEXT NOT NULL,
+    "stats" TEXT NOT NULL,
+    "bio" TEXT NOT NULL,
+    "themeKey" TEXT NOT NULL DEFAULT 'gold',
+    "classIconId" TEXT NOT NULL,
+    "factionIconId" TEXT NOT NULL,
+    "appearanceTags" TEXT NOT NULL,
+    "spriteTags" TEXT NOT NULL,
+    "seed" INTEGER NOT NULL,
+    "heroImagePath" TEXT,
+    "spriteImagePath" TEXT,
+    "userPrefs" TEXT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
+);
