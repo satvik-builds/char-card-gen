@@ -1,0 +1,3 @@
+[submodule "reference"]
+	path = reference
+	url = https://github.com/satvik-builds/char-card-gen-reference.git
