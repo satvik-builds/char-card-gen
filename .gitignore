@@ -52,3 +52,6 @@ next-env.d.ts
 /image-service/__pycache__/
 __pycache__/
 *.pyc
+
+# /brag video tooling (render scripts, stems, stills, venv)
+/brag-output/work/
